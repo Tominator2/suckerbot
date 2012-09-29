@@ -1,0 +1,30 @@
+UpdateTelemetry in ControlForm.pas now UpdateImages()
+
+Graph updating code is now in its own procedure called UpdateGraphs()
+
+Removed the LeftMotorOn and RightMotorOn flags in ControlForm.pas.
+
+Now use SetLeftMotorPower, setRightMotorPower and SetBothMotorsPower for motor control.
+
+'Swap motors' fucntionality is now implemented (Log data appears as L & R still but actual motor swapped)
+
+SettingsForm - level detection now reads values from the selected left/right line sensors.
+
+Replaced all MaskEdits on the SettingsForm with Edits and code to allow only backspace plus number keys as input.  Doesn't validate range but better.
+
+Add analog button warning to the "Detect Level" buttons in the SettingsForm.
+
+Reformat comments, long lines, and variable names in line with the Object Pascal Coding Standard.  See:  http://edn.embarcadero.com/article/10280
+
+Set the HID device for this list item to be the just arrived device in HidDev in
+the TSelectJoystickForm.HidCtlArrival method.
+
+Changed the Buttons[] and LastButton[] arrays from integer {0,1} values to boolean values.  Now called ButtonPressed[] and LastButtonState[] respectively.  This makes the code easier to read.
+
+The AnalogButton state variable in the SettingsForm was also updated from an integer to a boolean value.  Now called 'AnalogButtonOn'.
+  
+Removed the "ProcessMode" method.  Functionality is now spilt between two new procedures called CheckForBump and DriveOverSound.
+
+Renamed "Form1" to "MainForm".
+
+  
