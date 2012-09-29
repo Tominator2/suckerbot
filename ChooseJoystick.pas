@@ -1,5 +1,5 @@
 {   Copyright 2012 Thomas Tilley.
-    http://www.tomtilley.net/suckerbot/
+    http://www.tomtilley.net/projects/suckerbot/
 
     This file is part of Suckerbot.
 
