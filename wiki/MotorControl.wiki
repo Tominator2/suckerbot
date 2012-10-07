@@ -15,8 +15,6 @@ SetBothMotorsPower(power: Integer) sets the power level for both motors and tran
 
 The procedures SetLeftMotorPower(power: Integer; now: Boolean); and SetRightMotorPower(power: Integer; now: Boolean); can be used to set the motor power levels individually.  If 'now" is 'True' the new power level for the respective motor will be sent to the joystick immediately.  If 'now' is 'False' it will set the power level but it will not be sent to the joystick until you call 'TxMotorInstruction'.  
 
-MotorL, MotorR: 0..255
-    
 The function PulseMotors(leftPower, rightPower: Cardinal; milliSec: Cardinal): Boolean;  can be used to turn the motors on for a set period of time (in milliseconds).  At the end of the 'pulse' the timer function MotorTimerTimer is called which turns the motors off. 
 
 You can check the current power levels of the motors by reading the two global variables MotorL and MotorR.  Note that these values only refelect the current state of the joystick motors after TxMotorInstruction has been called. 
