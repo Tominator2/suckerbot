@@ -1,5 +1,5 @@
 #summary A brief overview of how data is received from the robot.
-#labels Phase-Implementation
+#labels Phase-Implementation,Featured
 
 = Introduction =
 
@@ -12,21 +12,27 @@ Data received from the joystick (buttons and joystick values) are decoded in the
 The button states are stored in a global array of Boolean values numbered from 1..19 called "ButtonPressed" where:
 
 1..12  correspond to the 12 joystick buttons
+
 13..16 correspond to the D-pad directions Up, Right, Down, Left 
+
 17     corresponds to the analog button
 
 Positions 18 and 19 in the array aren't read from the joystick itself but they are used to store the left and right motor states (True = On, False = off) where:
 
 18 is the left motor
+
 19 is the right motor
 
 The analog joystick values are stored in a global array of 4 Integer values called AnalogJoyValues[0..3] where:
 
 0 is the Left X-axis
+
 1 is the Left Y-axis
+
 2 is the Right X-axis
+
 3 is the Right Y-axis
- 
+
 The center position value on the joysticks is 127, so for a joystick's X-axis:
 
 values < 127 -> left
@@ -46,4 +52,3 @@ The HidController1DeviceData method is called automatically whenever data is rec
 3) Checks the bump sensor (only applies in "Bump" mode), and
 
 4) Plays the "Success" sound if it drives over a dark patch on the floor (in "Bump" and "Drive" modes).
-
