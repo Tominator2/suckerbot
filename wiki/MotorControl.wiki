@@ -1,0 +1,29 @@
+#summary An overview of how the robot motors (and wheels) are controlled.
+#labels Phase-Implementation
+
+= Introduction =
+
+This page provides a brief overview of how the motors (which drive the wheels) are controlled from ControlForm.pas. 
+
+= Details =
+
+The joysticks rumble motors are used to drive Suckerbot's wheels.  Suckerbot moves so that you could consider the USB cable to be the robot's tail that drags along behind it.  This means that to make the robot turn left you need to turn on what would be the the left rumble motor if you were holding the controller normally in your hands.  Similarly, to make the robot turn right you need to turn on the right rumble motor.  To make the robot move forwards you simply turn on both motors at the same time.
+
+In ControlForm.pas there are four procedures and one function which can be used to control the motors.  They all set the motor(s) power level from 0 (off) up to 255 (full power). 
+
+SetBothMotorsPower(power: Integer) sets the power level for both motors and transmits it to the joystick immediately.  Calling 'SetBothMotorsPower(0);' will stop both motors (and cancel the motor pulse timer - see below). 
+
+The procedures SetLeftMotorPower(power: Integer; now: Boolean); and SetRightMotorPower(power: Integer; now: Boolean); can be used to set the motor power levels individually.  If 'now" is 'True' the new power level for the respective motor will be sent to the joystick immediately.  If 'now' is 'False' it will set the power level but it will not be sent to the joystick until you call 'TxMotorInstruction'.  
+
+MotorL, MotorR: 0..255
+    
+The function PulseMotors(leftPower, rightPower: Cardinal; milliSec: Cardinal): Boolean;  can be used to turn the motors on for a set period of time (in milliseconds).  At the end of the 'pulse' the timer function MotorTimerTimer is called which turns the motors off. 
+
+You can check the current power levels of the motors by reading the two global variables MotorL and MotorR.  Note that these values only refelect the current state of the joystick motors after TxMotorInstruction has been called. 
+
+On the Settings form there is a 'Swap motors' checkbox. The value of this checkbox can be checked from ControlForm.pas  by calling the procedure SettingsForm.SwapMotors().  The function will return 'True' if the motors should be swapped and 'False' otherwise.
+
+http://tomtilley.net/projects/suckerbot/images/settings-screenshot.png
+
+Note that the motors are "swapped" at the point of sending the control data to the motors so the motor power level in MotorL is sent to the right motor and MotorR is sent to the left motor.
+
