@@ -7,7 +7,7 @@ This page provides a brief overview of how the motors (which drive the wheels) a
 
 = Details =
 
-The joysticks rumble motors are used to drive Suckerbot's wheels.  Suckerbot moves so that you could consider the USB cable to be the robot's tail that drags along behind it.  This means that to make the robot turn left you need to turn on what would be the the left rumble motor if you were holding the controller normally in your hands.  Similarly, to make the robot turn right you need to turn on the right rumble motor.  To make the robot move forwards you simply turn on both motors at the same time.
+The joystick's rumble motors are used to drive Suckerbot's wheels.  Suckerbot moves so that you could consider the USB cable to be the robot's tail that drags along behind it.  This means that to make the robot turn left you need to turn on what would be the the left rumble motor if you were holding the controller normally in your hands.  Similarly, to make the robot turn right you need to turn on the right rumble motor.  To make the robot move forwards you simply turn on both motors at the same time.
 
 In ControlForm.pas there are four procedures and one function which can be used to control the motors.  They all set the motor(s) power level from 0 (off) up to 255 (full power). 
 
