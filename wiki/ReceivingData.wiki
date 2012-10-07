@@ -43,7 +43,7 @@ and for a Y-axis:
 values < 127 -> up
 values > 127 -> down
 
-The HidController1DeviceData method is called automatically whenever data is received from the USB joystick and the array values are updated.  In addition,this method also:
+The HidController1DeviceData method is called automatically whenever data is received from the USB joystick and the array values are updated.  In addition, this method also:
 
 1) Calls methods to update the button images (UpdateImages) and the joystick graphs (UpdateGraphs) in the telemetry window,
 
