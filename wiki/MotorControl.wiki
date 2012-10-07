@@ -19,7 +19,7 @@ The function PulseMotors(leftPower, rightPower: Cardinal; milliSec: Cardinal): B
 
 You can check the current power levels of the motors by reading the two global variables MotorL and MotorR.  Note that these values only refelect the current state of the joystick motors after TxMotorInstruction has been called. 
 
-On the Settings form there is a 'Swap motors' checkbox. The value of this checkbox can be checked from ControlForm.pas  by calling the procedure SettingsForm.SwapMotors().  The function will return 'True' if the motors should be swapped and 'False' otherwise.
+On the Settings form there is a 'Swap motors' checkbox (see the lower left side of the screenshot below). The value of this checkbox can be checked from ControlForm.pas  by calling the procedure SettingsForm.SwapMotors().  The function will return 'True' if the motors should be swapped and 'False' otherwise.
 
 http://tomtilley.net/projects/suckerbot/images/settings-screenshot.png
 
