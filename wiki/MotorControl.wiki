@@ -1,5 +1,5 @@
 #summary An overview of how the robot motors (and wheels) are controlled.
-#labels Phase-Implementation
+#labels Phase-Implementation,Featured
 
 = Introduction =
 
@@ -26,4 +26,3 @@ On the Settings form there is a 'Swap motors' checkbox. The value of this checkb
 http://tomtilley.net/projects/suckerbot/images/settings-screenshot.png
 
 Note that the motors are "swapped" at the point of sending the control data to the motors so the motor power level in MotorL is sent to the right motor and MotorR is sent to the left motor.
-
