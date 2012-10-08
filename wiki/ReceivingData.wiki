@@ -7,9 +7,9 @@ This page provides a brief overview of how data is received from the robot in Co
 
 = Details =
 
-Data received from the joystick (buttons and joystick values) are decoded in the HidController1DeviceData method in ControlForm.pas
+Data received from the joystick (buttons and joystick values) are decoded in the *HidController1DeviceData* procedure in ControlForm.pas
 
-The button states are stored in a global array of Boolean values numbered from 1..19 called "ButtonPressed" where:
+The button states are stored in a global array of Boolean values numbered from 1..19 called *ButtonPressed* where:
 
 1..12  correspond to the 12 joystick buttons
 
@@ -23,7 +23,7 @@ Positions 18 and 19 in the array aren't read from the joystick itself but they a
 
 19 is the right motor
 
-The analog joystick values are stored in a global array of 4 Integer values called AnalogJoyValues[0..3] where:
+The analog joystick values are stored in a global array of 4 Integer values called *AnalogJoyValues[0..3]* where:
 
 0 is the Left X-axis
 
@@ -45,7 +45,7 @@ values > 127 -> down
 
 The HidController1DeviceData method is called automatically whenever data is received from the USB joystick and the array values are updated.  In addition, this method also:
 
-1) Calls methods to update the button images (UpdateImages) and the joystick graphs (UpdateGraphs) in the telemetry window,
+1) Calls methods to update the button images (*UpdateImages*) and the joystick graphs (*UpdateGraphs*) in the telemetry window,
 
 2) Writes data to the log file (if that option is selected on the Settings Form),
 
