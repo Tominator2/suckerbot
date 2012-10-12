@@ -27,4 +27,8 @@ Removed the "ProcessMode" method.  Functionality is now spilt between two new pr
 
 Renamed "Form1" to "MainForm".
 
+I just found a joystick that doesn't report the analog mode/button state.  The "turn analog on" dialog would stop users from getting to the "Bump"/"Follow" and "Level Detect" buttons.  In addition it would not read values from the right joystick becuase it could not tell if it was in analog mode.  The original dialog has now been  replaced with a "please check dialog" if the analog state cannot be determined.
+
+
+
   
