@@ -153,7 +153,7 @@ const
 
 implementation
 
-uses ChooseJoystick, Settings;
+uses ChooseJoystick, Settings, AnalogDialog;
 
 {$R *.dfm}
 
@@ -343,13 +343,15 @@ procedure TMainForm.LineFollowButtonClick(Sender: TObject);
 begin
   if Mode <> mFollow then
     begin
-      // Exit this method if the joystick is not in analogq mode
+      // If the joystick is not in analog mode or if we can't detect value
+      // of the analog button then "warn" the user to check
       if not ButtonPressed[17] then
         begin
-          MessageDlg('Please press the "Analog" button on the joystick and then ' +
-            'click "Follow" again.', mtWarning, [mbOK], 0);
-          exit;
-        end;
+          AnalogCheckForm.SetMessage('Please check that the joystick''s red ' +
+            '"ANALOG" LED is on then click "Follow" again.');
+          if AnalogCheckForm.Warn then
+            AnalogCheckForm.ShowModal;
+        end;  
 
       Mode := mFollow;
       LineFollowButton.Caption := 'Stop Following';
@@ -370,12 +372,14 @@ procedure TMainForm.BumpModeButtonClick(Sender: TObject);
 begin
   if Mode <> mBump then
     begin
-      // Exit this method if the joystick is not in analog mode
+      // If the joystick is not in analog mode or if we can't detect value
+      // of the analog button then "warn" the user to check
       if not ButtonPressed[17] then
         begin
-          MessageDlg('Please press the "Analog" button on the joystick and then ' +
-            'click "Bump Mode" again.', mtWarning, [mbOK], 0);
-          exit;
+          AnalogCheckForm.SetMessage('Please check that the joystick''s red ' +
+            '"ANALOG" LED is on then click "Bump Mode" again.');
+          if AnalogCheckForm.Warn then
+            AnalogCheckForm.ShowModal;
         end;
 
       Mode := mBump;
