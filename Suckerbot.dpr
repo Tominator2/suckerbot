@@ -22,7 +22,8 @@ uses
   Forms,
   ControlForm in 'ControlForm.pas' {MainForm},
   ChooseJoystick in 'ChooseJoystick.pas' {SelectJoystickForm},
-  Settings in 'Settings.pas' {SettingsForm};
+  Settings in 'Settings.pas' {SettingsForm},
+  AnalogDialog in '..\AnalogDialog.pas' {AnalogCheckForm};
 
 {$R *.res}
 
@@ -32,5 +33,6 @@ begin
   Application.CreateForm(TMainForm, MainForm);
   Application.CreateForm(TSelectJoystickForm, SelectJoystickForm);
   Application.CreateForm(TSettingsForm, SettingsForm);
+  Application.CreateForm(TAnalogCheckForm, AnalogCheckForm);
   Application.Run;
 end.
