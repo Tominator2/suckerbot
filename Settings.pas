@@ -113,6 +113,7 @@ type
     AudioFiles:   array[1..4] of String;
     procedure PlayAudio(AudioFile: String; allowed: Boolean);
     procedure LoadAudio(Index: Integer);
+    procedure DisplayAnalogWarning();
   public
     { Public declarations }
     LeftSensorValue:  Integer;
@@ -132,7 +133,6 @@ type
     function getLeftSensorMap(): Integer;
     function getRightSensorMap(): Integer;
     function getBumpLevel(): Integer;
-    function DisplayAnalogWarning(): Boolean;
 
   end;
 
@@ -140,6 +140,8 @@ var
   SettingsForm: TSettingsForm;
 
 implementation
+
+uses AnalogDialog;
 
 {$R *.dfm}
 
@@ -329,29 +331,29 @@ end;
 
 procedure TSettingsForm.Button6Click(Sender: TObject);
 begin
-  if (DisplayAnalogWarning()) then
-    EditLeftWhite.Text := IntToStr(leftSensorValue);
+  DisplayAnalogWarning();
+  EditLeftWhite.Text := IntToStr(leftSensorValue);
 end;
 
 
 procedure TSettingsForm.Button7Click(Sender: TObject);
 begin
-  if (DisplayAnalogWarning) then
-    EditLeftBlack.Text := IntToStr(leftSensorValue);
+  DisplayAnalogWarning;
+  EditLeftBlack.Text := IntToStr(leftSensorValue);
 end;
 
 
 procedure TSettingsForm.Button8Click(Sender: TObject);
 begin
-  if (DisplayAnalogWarning) then
-    EditRightWhite.Text := IntToStr(rightSensorValue);
+  DisplayAnalogWarning;
+  EditRightWhite.Text := IntToStr(rightSensorValue);
 end;
 
 
 procedure TSettingsForm.Button9Click(Sender: TObject);
 begin
-  if (DisplayAnalogWarning) then
-    EditRightBlack.Text := IntToStr(rightSensorValue);
+  DisplayAnalogWarning;
+  EditRightBlack.Text := IntToStr(rightSensorValue);
 end;
 
 
@@ -366,16 +368,15 @@ begin
 end;
 
 
-function TSettingsForm.DisplayAnalogWarning(): Boolean;
+procedure TSettingsForm.DisplayAnalogWarning();
 begin
-  if AnalogButtonOn then
-    Result := True
-  else
+  if not AnalogButtonOn then
     begin
-      MessageDlg('Please press the "Analog" button on the joystick and then ' +
-                 'click "Detect Level" again.',
-                 mtWarning, [mbOK], 0);
-      Result := False;
+      // "Warn" the user to check the analog button
+      AnalogCheckForm.SetMessage('Please check that the joystick''s red ' +
+        '"ANALOG" LED is on then click "Detect Level" again.');
+      if AnalogCheckForm.Warn then
+        AnalogCheckForm.ShowModal;
     end;
 end;
 
