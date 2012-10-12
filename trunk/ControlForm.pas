@@ -348,10 +348,10 @@ begin
       if not ButtonPressed[17] then
         begin
           AnalogCheckForm.SetMessage('Please check that the joystick''s red ' +
-            '"ANALOG" LED is on then click "Follow" again.');
+            '"ANALOG" LED is on.');
           if AnalogCheckForm.Warn then
             AnalogCheckForm.ShowModal;
-        end;  
+        end;
 
       Mode := mFollow;
       LineFollowButton.Caption := 'Stop Following';
@@ -377,7 +377,7 @@ begin
       if not ButtonPressed[17] then
         begin
           AnalogCheckForm.SetMessage('Please check that the joystick''s red ' +
-            '"ANALOG" LED is on then click "Bump Mode" again.');
+            '"ANALOG" LED is on.');
           if AnalogCheckForm.Warn then
             AnalogCheckForm.ShowModal;
         end;
@@ -576,63 +576,48 @@ begin
     AnalogJoyValues[0] := Cardinal(PChar(Data)[0]);
     AnalogJoyValues[1] := Cardinal(PChar(Data)[1]);
 
+    // Set the analog button state  (Note that not all joysticks report the
+    // analog mode/button state)
     if Cardinal(PChar(Data)[7]) = ANALOG_STICKS then
+      ButtonPressed[17] := True
+    else
+      ButtonPressed[17] := False;
+
+    // check D-pad states in Data[5] by masking out the buttons in top most
+    // 4 bits
+    DpadValue := (Cardinal(PChar(Data)[5])) and  $0F;
+
+    for I := 13 to 16 do
+      if ButtonMask[I] = DpadValue then
+        ButtonPressed[I] := True
+      else
+        ButtonPressed[I] := False;
+
+    // need to check for compass corners too - NE, SE, SW, NW
+    if DpadValue = NORTH_EAST then
       begin
-        ButtonPressed[17] := True; // set the analog button state
-
-        // check D-pad states in Data[5] by masking out the buttons in top most
-        // 4 bits
-        DpadValue := (Cardinal(PChar(Data)[5])) and  $0F;
-
-        for I := 13 to 16 do
-          if ButtonMask[I] = DpadValue then
-            ButtonPressed[I] := True
-          else
-            ButtonPressed[I] := False;
-
-        // need to check for compass corners too - NE, SE, SW, NW
-        if DpadValue = NORTH_EAST then
-          begin
-            ButtonPressed[13] := True; // N
-            ButtonPressed[14] := True; // E
-          end
-        else if DpadValue = SOUTH_EAST then
-          begin
-            ButtonPressed[15] := True; // S
-            ButtonPressed[14] := True; // E
-          end
-        else if DpadValue = SOUTH_WEST then
-          begin
-            ButtonPressed[15] := True; // S
-            ButtonPressed[16] := True; // W
-          end
-        else if DpadValue = NORTH_WEST then
-          begin
-            ButtonPressed[13] := True; // N
-            ButtonPressed[16] := True; // W
-          end;
-
-        // Read right thumbstick analog values
-        AnalogJoyValues[2] := Cardinal(PChar(Data)[3]);
-        AnalogJoyValues[3] := Cardinal(PChar(Data)[4]);
-
+        ButtonPressed[13] := True; // N
+        ButtonPressed[14] := True; // E
       end
-    else if Cardinal(PChar(Data)[7]) = DIGITAL_STICKS then
+    else if DpadValue = SOUTH_EAST then
       begin
-        ButtonPressed[17] := False;
-        // are these values useful/worth reading?  Unless the thumb sticks
-        // are in analog mode we have analog values on Lx axis and a reduced
-        // range (approx $52..$89) on on Ry axis when readining Data[2]
-        //
-        // Data[0] gives Lx digital values ($00 - $7F - $FF) and Data[1] the
-        // same for Ly.
-        //
-        // The right thumbstick Data[5] maps U, D, L, R into buttons 1, 2, 3, 4
-        // respectively (binary addition gives corners similarly to D-Pad
-        // buttons).
-
+        ButtonPressed[15] := True; // S
+        ButtonPressed[14] := True; // E
+      end
+    else if DpadValue = SOUTH_WEST then
+      begin
+        ButtonPressed[15] := True; // S
+        ButtonPressed[16] := True; // W
+      end
+    else if DpadValue = NORTH_WEST then
+      begin
+        ButtonPressed[13] := True; // N
+        ButtonPressed[16] := True; // W
       end;
 
+    // Read right thumbstick analog values
+    AnalogJoyValues[2] := Cardinal(PChar(Data)[3]);
+    AnalogJoyValues[3] := Cardinal(PChar(Data)[4]);
 
     // Check for bumps and spots on the floor here but all other control
     // should start with an initial command that then decides what to do next
