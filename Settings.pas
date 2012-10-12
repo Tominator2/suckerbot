@@ -374,7 +374,7 @@ begin
     begin
       // "Warn" the user to check the analog button
       AnalogCheckForm.SetMessage('Please check that the joystick''s red ' +
-        '"ANALOG" LED is on then click "Detect Level" again.');
+        '"ANALOG" LED is on.');
       if AnalogCheckForm.Warn then
         AnalogCheckForm.ShowModal;
     end;
