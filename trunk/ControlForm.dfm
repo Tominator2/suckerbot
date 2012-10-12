@@ -34995,14 +34995,14 @@ object MainForm: TMainForm
     end
     object Label3: TLabel
       Left = 366
-      Top = 176
+      Top = 197
       Width = 66
       Height = 13
       Caption = 'Right Joystick'
     end
     object ChartJoyLeft: TChart
       Left = 350
-      Top = 32
+      Top = 30
       Width = 313
       Height = 137
       AllowPanning = pmHorizontal
@@ -35063,7 +35063,7 @@ object MainForm: TMainForm
     end
     object ChartJoyRight: TChart
       Left = 350
-      Top = 208
+      Top = 211
       Width = 313
       Height = 137
       AllowPanning = pmHorizontal
