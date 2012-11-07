@@ -36,11 +36,13 @@ The analog joystick values are stored in a global array of 4 Integer values call
 The center position value on the joysticks is 127, so for a joystick's X-axis:
 
 values < 127 -> left
+
 values > 127 -> right
 
 and for a Y-axis:
 
 values < 127 -> up
+
 values > 127 -> down
 
 The HidController1DeviceData method is called automatically whenever data is received from the USB joystick and the array values are updated.  In addition, this method also:
