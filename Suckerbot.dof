@@ -113,7 +113,7 @@ RootDir=
 IncludeVerInfo=1
 AutoIncBuild=0
 MajorVer=0
-MinorVer=3
+MinorVer=4
 Release=0
 Build=0
 Debug=0
@@ -126,7 +126,7 @@ CodePage=1252
 [Version Info Keys]
 CompanyName=Thomas Tilley
 FileDescription=
-FileVersion=0.3.0.0
+FileVersion=0.4.0.0
 InternalName=
 LegalCopyright=
 LegalTrademarks=
