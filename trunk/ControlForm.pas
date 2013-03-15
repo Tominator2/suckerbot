@@ -93,7 +93,7 @@ type
     AnalogJoyValues: array [0..3] of Integer; //[left-X, left-Y, right-X, right-Y]
     StartTime: TDateTime;
     UsbVid: Integer;  // USB vendor
-    UsbPid: Integer;  // USB roduct info
+    UsbPid: Integer;  // USB product info
     UsbDev: TJvHidDevice;     // this USB device is the robot
     UsbParams: TStrings;      // for passing selected joystick details
     ButtonMask: array [1..16] of Cardinal;
@@ -145,8 +145,8 @@ const
   SOUTH_EAST = $03; // SE
   SOUTH_WEST = $05; // SW
   NORTH_WEST = $07; // NW
-  ANALOG_STICKS  = $40; // analog mode is on
-  DIGITAL_STICKS = $C0; // analog mode is off
+  ANALOG_STICKS  = $40; // analog mode is on  (only for some joysticks!)
+  DIGITAL_STICKS = $C0; // analog mode is off (only for some joysticks!)
   STICK_MIN = $00;  // LEFT or UP
   STICK_MID = $7F;  // CENTERED
   STICK_MAX = $FF;  // RIGHT or DOWN
@@ -531,7 +531,7 @@ begin
 end;
 
 
-{ This method is called when the joystick has data (button pressses etc.)
+{ This method is called when the joystick has data (button presses etc.)
   the data is decoded and stored in a number of arrays for convenience }
 procedure TMainForm.HidController1DeviceData(HidDev: TJvHidDevice;
   ReportID: Byte; const Data: Pointer; Size: Word);
