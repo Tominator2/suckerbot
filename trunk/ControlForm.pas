@@ -67,6 +67,10 @@ type
     SeriesRy: TFastLineSeries;
     SeriesRx: TFastLineSeries;
     MotorTimer: TTimer;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure DriveButtonClick(Sender: TObject);
     procedure SetupButtonClick(Sender: TObject);
