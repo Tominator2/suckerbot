@@ -34989,16 +34989,68 @@ object MainForm: TMainForm
     object Label2: TLabel
       Left = 366
       Top = 16
-      Width = 59
+      Width = 171
       Height = 13
-      Caption = 'Left Joystick'
+      Caption = 'Left Joystick    ( x-axis        y-axis     )'
     end
     object Label3: TLabel
       Left = 366
       Top = 197
-      Width = 66
+      Width = 172
       Height = 13
-      Caption = 'Right Joystick'
+      Caption = 'Right Joystick  ( x-axis        y-axis     )'
+    end
+    object Label4: TLabel
+      Left = 472
+      Top = 7
+      Width = 10
+      Height = 21
+      Caption = '-'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clNavy
+      Font.Height = -24
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label5: TLabel
+      Left = 522
+      Top = 7
+      Width = 10
+      Height = 29
+      Caption = '-'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clRed
+      Font.Height = -24
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label6: TLabel
+      Left = 474
+      Top = 188
+      Width = 10
+      Height = 29
+      Caption = '-'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clNavy
+      Font.Height = -24
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label7: TLabel
+      Left = 523
+      Top = 188
+      Width = 10
+      Height = 29
+      Caption = '-'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clRed
+      Font.Height = -24
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
     end
     object ChartJoyLeft: TChart
       Left = 350
