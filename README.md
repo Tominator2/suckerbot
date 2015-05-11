@@ -14,4 +14,6 @@ You can download the latest versions for Windows 32-bit operating systems here:
 *   Binary: [suckerbot-v0.4-win32.zip](https://github.com/Tominator2/suckerbot/releases/download/v0.4-bin/suckerbot-v0.4-win32.zip) (1.77 MB)
 *   Source: [suckerbot-v0.4-source.zip](https://github.com/Tominator2/suckerbot/releases/download/v0.4/suckerbot-v0.4-source.zip) (1.88 MB)
 
+The Wiki pages contain some helpful information about [programming and controlling Suckerbot](https://github.com/Tominator2/suckerbot/wiki). 
+
 This code was originally hosted on [Google Code](https://code.google.com/p/suckerbot/).
